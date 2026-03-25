@@ -560,7 +560,7 @@ void sleep_screen(SDL_Renderer* renderer) {
         SDL_WaitEvent(&e); // CPU ~0%
 
         if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_KEYDOWN) {
-            system("vcgencmd display_power 1");
+            system("echo 0 | sudo tee /sys/class/backlight/11-0045/bl_power");
             sleep_mode = 0;
         }
 
@@ -653,7 +653,7 @@ int main() {
                 }
 
                 if (in_rect(sleep_btn, x, y)) {
-                    system("vcgencmd display_power 0");
+                    system("echo 1 | sudo tee /sys/class/backlight/11-0045/bl_power");
                     sleep_mode = 1;
                 }
             }
