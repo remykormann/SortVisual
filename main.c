@@ -26,6 +26,7 @@ int arr[MAX_N];
 SDL_Rect action_btn = {0, HEIGHT - BUTTON_HEIGHT, WIDTH, BUTTON_HEIGHT};
 SDL_Rect sleep_btn = {WIDTH - 160, 5, 150, 40};
 
+system("vcgencmd display_power 1");
 int sleep_mode = 0;
 
 Uint32 finish_time = 0;
@@ -560,6 +561,7 @@ void sleep_screen(SDL_Renderer* renderer) {
         SDL_WaitEvent(&e); // CPU ~0%
 
         if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_KEYDOWN) {
+            system("vcgencmd display_power 1");
             sleep_mode = 0;
         }
 
@@ -652,6 +654,7 @@ int main() {
                 }
 
                 if (in_rect(sleep_btn, x, y)) {
+                    system("vcgencmd display_power 0");
                     sleep_mode = 1;
                 }
             }
