@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define WIDTH (int)(800*1)
-#define HEIGHT (int)(480*1)
+#define WIDTH 800
+#define HEIGHT 480
 
 #define TOP_BAR 50
 #define BUTTON_HEIGHT 80
@@ -593,9 +593,13 @@ int main() {
     SDL_Init(SDL_INIT_VIDEO);
     TTF_Init();
 
-    SDL_Window* window = SDL_CreateWindow("Sort Visual",
-        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        WIDTH, HEIGHT, 0);
+    SDL_Window* window = SDL_CreateWindow(
+        "Sort Visual",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        800, 480,
+        SDL_WINDOW_FULLSCREEN_DESKTOP
+    );
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
