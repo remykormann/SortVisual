@@ -26,7 +26,6 @@ int arr[MAX_N];
 SDL_Rect action_btn = {0, HEIGHT - BUTTON_HEIGHT, WIDTH, BUTTON_HEIGHT};
 SDL_Rect sleep_btn = {WIDTH - 160, 5, 150, 40};
 
-system("vcgencmd display_power 1");
 int sleep_mode = 0;
 
 Uint32 finish_time = 0;
