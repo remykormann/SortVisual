@@ -7,7 +7,6 @@
 #define HEIGHT 480
 
 #define TOP_BAR 50
-#define BUTTON_HEIGHT 80
 #define MAX_N 100
 
 // ---------------- STRUCT ----------------
@@ -23,7 +22,7 @@ typedef struct {
 // ---------------- GLOBAL ----------------
 int arr[MAX_N];
 
-SDL_Rect action_btn = {0, HEIGHT - BUTTON_HEIGHT, WIDTH, BUTTON_HEIGHT};
+SDL_Rect action_btn = {WIDTH - 345, 5, 165, 40};
 SDL_Rect sleep_btn = {WIDTH - 160, 5, 150, 40};
 
 int sleep_mode = 0;
@@ -484,7 +483,7 @@ void draw(SDL_Renderer* renderer, TTF_Font* font, int done, Algo* algo, int size
 
         SDL_Rect bar = {
             i * barWidth,
-            (HEIGHT - BUTTON_HEIGHT) - arr[i],
+            (HEIGHT) - arr[i],
             barWidth - 2,
             arr[i]
         };
@@ -532,11 +531,10 @@ void draw(SDL_Renderer* renderer, TTF_Font* font, int done, Algo* algo, int size
         } else {
             sprintf(text, "RESTART");
         }
-
-        draw_text(renderer, font, text, WIDTH/2 - 100, HEIGHT - BUTTON_HEIGHT + 25);
+        draw_text(renderer, font, text, WIDTH - 335, 10);
     }
     else
-        draw_text(renderer, font, "SKIP >", WIDTH/2 - 50, HEIGHT - BUTTON_HEIGHT + 25);
+        draw_text(renderer, font, "SKIP >", WIDTH - 300, 10);
 
     // BUTTON VEILLE
 
@@ -583,7 +581,7 @@ void start_new_algo(int* current_algo, Algo* algos, int algo_count, int* size, i
     *size = algos[*current_algo].size;
 
     for (int i = 0; i < *size; i++)
-        arr[i] = rand() % (HEIGHT - BUTTON_HEIGHT - TOP_BAR);
+        arr[i] = rand() % (HEIGHT - TOP_BAR);
 
     algos[*current_algo].init(size);
     *done = 0;
@@ -628,7 +626,7 @@ int main() {
     int size = algos[current_algo].size;
 
     for (int i = 0; i < size; i++)
-        arr[i] = rand() % (HEIGHT - BUTTON_HEIGHT - TOP_BAR);
+        arr[i] = rand() % (HEIGHT - TOP_BAR);
 
     algos[current_algo].init(&size);
 
