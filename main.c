@@ -1,3 +1,4 @@
+//compile with : gcc main.c -o sort -lSDL2 -lSDL2_ttf
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdlib.h>
@@ -607,15 +608,15 @@ int main() {
     srand(time(NULL) ^ SDL_GetTicks());
 
     Algo algos[] = {
-        {"Bogo Sort", 6, 60, bogo_init, bogo_step, default_color},
+        {"Bogo Sort", 7, 60, bogo_init, bogo_step, default_color},
         {"Bubble Sort", 50, 60, bubble_init, bubble_step, bubble_color},
         {"Selection Sort", 50, 60, selection_init, selection_step, selection_color},
-        {"Staline Sort", 100, 60, stalin_init, stalin_step, stalin_color},
-        {"Thanos Sort", 100, 15, thanos_init, thanos_step, thanos_color},
+        {"Staline Sort", 50, 60, stalin_init, stalin_step, stalin_color},
+        {"Thanos Sort", 50, 15, thanos_init, thanos_step, thanos_color},
         {"Insertion Sort", 50, 60, insertion_init, insertion_step, insertion_color},
         {"Cocktail Sort", 50, 60, cocktail_init, cocktail_step, cocktail_color},
         {"Gnome Sort", 50, 60, gnome_init, gnome_step, gnome_color},
-        {"Gamble Sort", 20, 60, gamble_init, gamble_step, gamble_color}
+        {"Gamble Sort", 30, 60, gamble_init, gamble_step, gamble_color}
     };
 
     int algo_count = sizeof(algos)/sizeof(Algo);
